@@ -17,11 +17,10 @@ app.config['DEBUG'] = True
 # Note: We don't need to call run() since our application is embedded within
 # the App Engine WSGI application server.
 
-
 @app.route('/')
 def hello():
-    """Return a friendly HTTP greeting."""
-    return 'Hello World!'
+    template = JINJA_ENVIRONMENT.get_template('templates/index.html')
+    return template.render()
 
 
 @app.errorhandler(404)
